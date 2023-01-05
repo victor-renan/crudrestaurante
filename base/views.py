@@ -33,6 +33,8 @@ def login_view(request):
             return render(request, "base/login.html", {
                 "error": "Nome ou senha inválidos. Tente novamente."
             })
+    else:
+        return render(request, "base/login.html")
         
 
 def logout_view(request):

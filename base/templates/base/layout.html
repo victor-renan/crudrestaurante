@@ -45,11 +45,17 @@
                             <i class="mdi mdi-information-outline mx-1"></i>Sobre
                         </a>
                     </li>
-                    {% if user.is_authenticated %}
-                    <li class="nav-item mx-1">
-                        <a class="nav-link" href="{% url 'logout' %}"></a>
+                    {% if not user.is_authenticated %}
+                    <li class="nav-item mx-1 px-2 py-1">
+                        <a class="nav-link btn btn-outline-primary px-3 py-1" href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li class="nav-item mx-1 px-2 py-1">
+                        <a class="nav-link btn btn-primary px-2 py-1" href="{% url 'register' %}">Cadastrar</a>
                     </li>
                     {% else %}
+                    <li class="nav-item mx-1">
+                        <a class="nav-link btn-danger btn-sm p-0" href="{% url 'logout' %}">Logout</a>
+                    </li>
                     {% endif %}
                 </ul>
             </div>
