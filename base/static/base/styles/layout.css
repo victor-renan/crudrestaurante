@@ -2,7 +2,18 @@
     margin: 0;
     padding: 0;
 }
+.navbar {
+    background-color: #1d0f09;
+}
+.navbar-brand {
+    font-family: "Satisfy";
+}
 .logo {
-    width: 22px;
-    height: 22px;
+    width: 26px;
+    height: 26px;
+}
+.logo__text {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
 }
