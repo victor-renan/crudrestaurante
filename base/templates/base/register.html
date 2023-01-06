@@ -11,8 +11,8 @@
         <div class="row row-cols-2 m-0 h-custom">
             <div class="col d-flex flex-column justify-content-center p-custom h-100 form-container">
                 <img class="img-fluid mx-auto mb-3 login__logo" src="{% static 'base/images/logo.svg' %}" alt="Logo">
-                <h2 class="text-center"><b>Bem vindo(a) de volta!</b></h2>
-                <p class="text-center mb-5">Entre para escolher seu prato predileto!</p>
+                <h2 class="text-center"><b>Bem vindo(a)!</b></h2>
+                <p class="text-center mb-5">Cadastre-se para ficar por dentro de todas as delícias!</p>
                 <form action="{% url 'register' %}" method="post">
                     {% csrf_token %}
                     <label class="mb-1" for="username">Username:</label>
@@ -23,7 +23,7 @@
                     <input class="form-control mb-4" type="password" name="password" id="password" placeholder="Digite sua senha">
                     <label class="mb-1" for="confirmation">Confirmação:</label>
                     <input class="form-control mb-4" type="password" name="confirmation" id="confirmation" placeholder="Repita sua senha">
-                    <input class="w-100 btn btn-warning" type="submit" value="Enviar">
+                    <input class="w-100 btn btn-warning" type="submit" value="Cadastrar">
                     {% if error %}
                     <p class="alert alert-danger mt-3">
                         <i class="mdi mdi-alert me-2"></i> {{error}}
