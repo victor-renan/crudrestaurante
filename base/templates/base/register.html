@@ -1,5 +1,40 @@
 {% extends "base/layout.html" %}
 {% load static %}
 
+{% block head %}
+<link rel="stylesheet" href="{% static 'base/styles/register.css' %}">
+{% endblock %}
+
 {% block body %}
+<main>
+    <section class="container p-0 m-0 mx-auto mt-5" id="register-view">
+        <div class="row row-cols-2 m-0 h-custom">
+            <div class="col d-flex flex-column justify-content-center p-custom h-100 form-container">
+                <img class="img-fluid mx-auto mb-3 login__logo" src="{% static 'base/images/logo.svg' %}" alt="Logo">
+                <h2 class="text-center"><b>Bem vindo(a) de volta!</b></h2>
+                <p class="text-center mb-5">Entre para escolher seu prato predileto!</p>
+                <form action="{% url 'register' %}" method="post">
+                    {% csrf_token %}
+                    <label class="mb-1" for="username">Username:</label>
+                    <input class="form-control mb-3" type="text" name="username" id="username" placeholder="Digite o seu username">
+                    <label class="mb-1" for="username">Email:</label>
+                    <input class="form-control mb-3" type="text" name="email" id="email" placeholder="Digite o seu email">
+                    <label class="mb-1" for="password">Senha:</label>
+                    <input class="form-control mb-4" type="password" name="password" id="password" placeholder="Digite sua senha">
+                    <label class="mb-1" for="confirmation">Confirmação:</label>
+                    <input class="form-control mb-4" type="password" name="confirmation" id="confirmation" placeholder="Repita sua senha">
+                    <input class="w-100 btn btn-warning" type="submit" value="Enviar">
+                    {% if error %}
+                    <p class="alert alert-danger mt-3">
+                        <i class="mdi mdi-alert me-2"></i> {{error}}
+                    </p>
+                    {% endif %}
+                </form>
+            </div>
+            <div class="col login-img__container p-0 d-flex h-100">
+                <img class="img-fluid login-img w-100 h-100" src="{% static 'base/images/register_img.jpg' %}" alt="Register Image">
+            </div>
+        </div>
+    </section>
+</main>
 {% endblock %}
