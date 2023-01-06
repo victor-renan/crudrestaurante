@@ -1,2 +1,20 @@
 {% extends "base/layout.html" %}
+{% load static %}
 
+{% block head %}
+<link rel="stylesheet" href="{% static 'base/styles/index.css' %}">
+{% endblock %}
+
+{% block body %}
+<main>
+    <section id="home" class="d-flex justify-content-center align-items-center">
+        <div class="d-flex flex-column home__text">
+            <h1 class="home__text__title mb-3 pb-2">VR Restaurante</h1>
+            <h3 class="home__text__sub mb-3">O restaurante da sua família!</h3>
+            <p class="home__text__desc mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque fuga dolor quod, id tenetur dolores. Esse iusto exercitationem 
+                unde nesciunt, inventore sapiente non iure aliquam. Laborum quibusdam cupiditate magni labore?</p>
+            <a href="#info" class="home__text__link btn d-flex align-items-center justify-content-center btn-warning mx-auto">Saiba Mais</a>
+        </div>
+    </section>
+</main>
+{% endblock %}
