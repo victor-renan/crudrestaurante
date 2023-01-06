@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.form-container {
+    padding: 4rem 5rem;
+}
+.login__logo {
+    width: 84px;
+}
+.row {
+    box-shadow: 0 0 20px #b7b7b7;
+    height: 80vh;
+    border-radius: 12px;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+.login-img__container {
+    border-radius: 32px 12px 12px 32px;
+    overflow: hidden;
+}
+.login-img {
+    object-fit: cover;
+}
+.submit-btn {
+    height: 40px;
+}
