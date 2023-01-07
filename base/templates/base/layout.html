@@ -62,10 +62,15 @@
                         <a class="nav-link btn btn-warning text-dark px-3 py-1" href="{% url 'register' %}">Cadastrar</a>
                     </li>
                     {% else %}
-                    <li class="nav-item mx-1 ms-auto">
-                        <a class="nav-link text-danger" href="{% url 'logout' %}">
-                            <b><i class="mdi mdi-account mx-2"></i>Logout</b>
-                        </a>
+                    <li class="nav-item dropdown ms-auto">
+                        <a href="#" role="button" data-bs-toggle="dropdown" class="nav-link dropdown-toggle"><i class="mdi mdi-account mx-2"></i><b>{{user}}</b></a>
+                        <ul class="navbar-dropdown__menu dropdown-menu dropdown-menu-dark bg-custom p-0">
+                            <li class="dropdown-item rounded p-2">
+                                <a class="navbar-dropdown__link nav-link text-danger p-0" href="{% url 'logout' %}">
+                                    <b><i class="mdi mdi-logout account-minus mx-2"></i>Logout</b>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     {% endif %}
                 </ul>
