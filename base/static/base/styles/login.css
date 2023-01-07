@@ -19,10 +19,6 @@
 }
 .login-img__container {
     border-radius: 32px 12px 12px 32px;
-    overflow: hidden;
-}
-.login-img {
-    object-fit: cover;
 }
 .submit-btn {
     height: 40px;

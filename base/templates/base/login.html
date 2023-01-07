@@ -26,9 +26,10 @@
                     </p>
                     {% endif %}
                 </form>
+                <a class="text-center mt-3 text-decoration-none" href="{% url 'register' %}">Não tem uma conta? Cadastre-se</a>
             </div>
-            <div class="col login-img__container p-0 d-flex h-100">
-                <img class="img-fluid login-img w-100 h-100" src="{% static 'base/images/login_img.jpg' %}" alt="Login Image">
+            <div class="col login-img__container p-0 d-flex h-100 overflow-hidden">
+                <img class="img-fluid login-img w-100 h-100 object-fit-cover" src="{% static 'base/images/login_img.jpg' %}" alt="Login Image">
             </div>
         </div>
     </section>

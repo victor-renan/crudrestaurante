@@ -3,20 +3,27 @@ from django.contrib.auth import login, logout, authenticate
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.db import IntegrityError
+from django.contrib.auth.decorators import login_required
+
 from .models import *
 
 
 def index(request):
     return render(request, "base/index.html")
 
+
+@login_required(login_url='/login/')
 def cardapio(request):
     return render(request, "base/cardapio.html")
+
 
 def categorias(request):
     return render(request, "base/categorias.html")
 
+
 def sobre(request):
     return render(request, "base/sobre.html")
+
 
 def login_view(request):
     if request.method == "POST":
