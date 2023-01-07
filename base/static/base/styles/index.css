@@ -3,7 +3,7 @@
     padding: 0;
 }
 #home {
-    height: calc(70vh - 58px);
+    height: calc(70vh - 64px);
 }
 .home__text__container {
     background: linear-gradient(45deg, rgba(0,0,0,0.7), rgba(0,0,0,0.2));

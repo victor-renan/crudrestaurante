@@ -4,6 +4,10 @@
 }
 .navbar {
     background-color: #141413;
+    height: 64px;
+}
+.navbar-dropdown__menu{
+    background-color: #252524;
 }
 .navbar-brand {
     font-family: "Satisfy";
