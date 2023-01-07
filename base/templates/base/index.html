@@ -7,13 +7,44 @@
 
 {% block body %}
 <main>
-    <section id="home" class="d-flex justify-content-center align-items-center">
-        <div class="d-flex flex-column home__text">
-            <h1 class="home__text__title mb-3 pb-2">VR Restaurante</h1>
-            <h3 class="home__text__sub mb-3">O restaurante da sua família!</h3>
-            <p class="home__text__desc mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque fuga dolor quod, id tenetur dolores. Esse iusto exercitationem 
-                unde nesciunt, inventore sapiente non iure aliquam. Laborum quibusdam cupiditate magni labore?</p>
-            <a href="#info" class="home__text__link btn d-flex align-items-center justify-content-center btn-warning mx-auto">Saiba Mais</a>
+    <section id="home" class="d-flex w-100 card justify-content-center align-items-center border-0 rounded-0">
+        <img src="{% static 'base/images/index_img_6.jpg' %}" class="w-100 h-100 border-0 rounded-0 card-img img-fluid object-fit-cover" alt="Imagem Home">
+        <div class="home__text__container card-img-overlay d-flex justify-content-center align-items-center w-100 h-100 border-0 rounded-0">
+            <div class="home__text d-flex justify-content-center align-items-center flex-column text-white">
+                <h1 class="home__text__title mb-3 pb-2">VR Restaurante</h1>
+                <h3 class="home__text__sub mb-3">O restaurante da sua família!</h3>
+                <p class="home__text__desc mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque fuga dolor quod, id tenetur dolores. Esse iusto exercitationem 
+                    unde nesciunt, inventore sapiente non iure aliquam. Laborum quibusdam cupiditate magni labore?</p>
+                <a href="{% url 'sobre' %}" class="home__text__link btn d-flex align-items-center justify-content-center btn-warning mx-auto">Saiba Mais</a>
+            </div>
+        </div>
+    </section>
+    <section id="examples" class="container-fluid p-0">
+        <div class="examples__row row m-0">
+            <div class="examples__col col w-100 h-100 card p-0 border-0 rounded-0">
+                <img src="{% static 'base/images/index_img_2.jpg' %}" class="examples__img card-img w-100 h-100 object-fit-cover rounded-0 border-0" alt="Example Image">
+                <div class="examples__col__text card-img-overlay text-light d-flex flex-column justify-content-center rounded-0 border-0 p-5">
+                    <h1 class="examples__col__text__title">Café da manhã</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, nam! Assumenda laboriosam, blanditiis iusto vel nemo, omnis culpa enim consequuntur excepturi natus perferendis a repellat!</p>
+                    <a class="examples__col__text__link btn btn-warning" href="{% url 'cardapio' %}">Fazer Pedido &rightarrow;</a>
+                </div>
+            </div>
+            <div class="examples__col col w-100 h-100 card p-0 border-0 rounded-0">
+                <img src="{% static 'base/images/index_img_3.jpg' %}" class="examples__img card-img w-100 h-100 object-fit-cover rounded-0 border-0" alt="Example Image">
+                <div class="examples__col__text card-img-overlay text-light d-flex flex-column justify-content-center rounded-0 border-0 p-5">
+                    <h1 class="examples__col__text__title">Almoço</h1>
+                    <p class="examples__col__text__sub">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, nam! Assumenda laboriosam, blanditiis iusto vel nemo, omnis culpa enim consequuntur excepturi natus perferendis a repellat!</p>
+                    <a class="examples__col__text__link btn btn-warning" href="{% url 'cardapio' %}">Fazer Pedido &rightarrow;</a>
+                </div>
+            </div>
+            <div class="examples__col col w-100 h-100 card p-0 border-0 rounded-0">
+                <img src="{% static 'base/images/index_img_4.jpg' %}" class="examples__img card-img w-100 h-100 object-fit-cover rounded-0 border-0" alt="Example Image">
+                <div class="examples__col__text card-img-overlay text-light d-flex flex-column justify-content-center rounded-0 border-0 p-5">
+                    <h1 class="examples__col__text__title">Jantar</h1>
+                    <p class="examples__col__text__sub">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, nam! Assumenda laboriosam, blanditiis iusto vel nemo, omnis culpa enim consequuntur excepturi natus perferendis a repellat!</p>
+                    <a class="examples__col__text__link btn btn-warning" href="{% url 'cardapio' %}">Fazer Pedido &rightarrow;</a>
+                </div>
+            </div>
         </div>
     </section>
 </main>

@@ -10,7 +10,7 @@
     <section class="container p-0 m-0 mx-auto mt-5" id="register-view">
         <div class="row row-cols-2 m-0 h-custom">
             <div class="col d-flex flex-column justify-content-center p-custom h-100 form-container">
-                <img class="img-fluid mx-auto mb-3 login__logo" src="{% static 'base/images/logo.svg' %}" alt="Logo">
+                <img class="img-fluid mx-auto mb-3 register__logo" src="{% static 'base/images/logo.svg' %}" alt="Logo">
                 <h2 class="text-center"><b>Bem vindo(a)!</b></h2>
                 <p class="text-center mb-5">Cadastre-se para ficar por dentro de todas as delícias!</p>
                 <form action="{% url 'register' %}" method="post">
@@ -30,9 +30,10 @@
                     </p>
                     {% endif %}
                 </form>
+                <a class="text-center mt-3 text-decoration-none" href="{% url 'login' %}">Já tem uma conta? Entre</a>
             </div>
-            <div class="col login-img__container p-0 d-flex h-100">
-                <img class="img-fluid login-img w-100 h-100" src="{% static 'base/images/register_img.jpg' %}" alt="Register Image">
+            <div class="col register-img__container p-0 d-flex h-100 overflow-hidden">
+                <img class="img-fluid login-img w-100 h-100 object-fit-cover" src="{% static 'base/images/register_img.jpg' %}" alt="Register Image">
             </div>
         </div>
     </section>
