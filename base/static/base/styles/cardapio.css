@@ -1,0 +1,11 @@
+.prato {
+    max-width: 400px;
+}
+.prato__imagem {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+}
+.prato__data {
+    font-weight: 600;
+}

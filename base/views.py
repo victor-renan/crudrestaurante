@@ -14,7 +14,10 @@ def index(request):
 
 @login_required(login_url='/login/')
 def cardapio(request):
-    return render(request, "base/cardapio.html")
+    cardapio = Prato.objects.all()
+    return render(request, "base/cardapio.html", {
+        "cardapio": cardapio
+    })
 
 
 def categorias(request):
