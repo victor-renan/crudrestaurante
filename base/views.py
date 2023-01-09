@@ -14,10 +14,57 @@ def index(request):
 
 @login_required(login_url='/login/')
 def cardapio(request):
+    #SELECT * FROM x
     cardapio = Prato.objects.all()
-    return render(request, "base/cardapio.html", {
-        "cardapio": cardapio
-    })
+    categorias = Categoria.objects.all()
+    encomendas = Encomenda.objects.filter(user=request.user).all()
+    pratos_encomendados = []
+
+    for encomenda in encomendas:
+        pratos_encomendados.append(encomenda.prato.id)
+
+    #Define o contexto
+    context = {
+        "cardapio": cardapio,
+        "categorias": categorias,
+        "encomendas": encomendas,
+        "pratos_encomendados": pratos_encomendados
+    }
+    #Verifica se o metodo eh POST
+    if request.method == "POST": 
+        encomenda = request.POST["encomenda"]
+        quantidade = request.POST["quantidade"]
+
+        #verifica se o input foi repassado
+        if encomenda:
+            Encomenda.objects.create(
+                user=request.user,
+                prato=Prato.objects.filter(id=encomenda).get(),
+                quantidade=quantidade
+            ).save()
+        
+        #Refresh the values
+        cardapio = Prato.objects.all()
+        categorias = Categoria.objects.all()
+        encomendas = Encomenda.objects.filter(user=request.user).all()
+        pratos_encomendados = []
+
+        for encomenda in encomendas:
+            pratos_encomendados.append(encomenda.prato.id)
+
+        #atualiza o contexto
+        context.update({"message": "A encomenda foi feita com sucesso!"})
+
+        return render(request, "base/cardapio.html", context)
+
+    #Verifica a form do filtro enviou a querry
+    filtro = request.GET.get("filtro")
+    if filtro:
+        if filtro != 'Todos':
+            cardapio = Prato.objects.filter(categoria__nome=filtro)
+
+    #Carrega a pagina
+    return render(request, "base/cardapio.html", context)
 
 
 def categorias(request):

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.conf import settings
 
 class User(AbstractUser):
     pass
@@ -19,3 +20,10 @@ class Categoria(models.Model):
     nome = models.CharField(max_length=64)
     def __str__(self):
         return f"{self.nome}"
+
+class Encomenda(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    prato = models.ForeignKey('Prato', on_delete=models.CASCADE)
+    quantidade = models.IntegerField(default=1)
+    def __str__(self):
+        return f"{self.user} -> {self.quantidade} {self.prato}"

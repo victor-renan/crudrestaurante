@@ -6,10 +6,22 @@
 {% endblock %}
 
 {% block body %}
-<main class="container-fluid p-4" id="cardiapio-view">
-    <h2 class="mb-4">Cardápio</h2>
-
-    <section class="d-flex gap-3">
+<main class="container" id="cardiapio-view">
+    <h1 class="mb-4 pt-4">Cardápio</h1>
+    {% if message %}
+        <p class="alert alert-info"><i class="mdi mdi-info me-3"></i>{{message}}</p>
+    {% endif %}
+    <form class="filtro__form mb-5 d-flex align-items-center" method="get" action="{% url 'cardapio' %}">
+        <h6 class="m-0 me-3">Filtrar: </h6>
+        <select class="filtro__select m-0 form-select" name="filtro" id="filtro">
+            <option value="Todos">Todos os pratos</option>
+            {% for categoria in categorias %}
+                <option value="{{categoria.nome}}">{{categoria.nome}}</option>
+            {% endfor %}
+        </select>
+        <input class="ms-2 btn btn-warning" type="submit" value="Filtrar">
+    </form>
+    <section class="prato__container gap-3 mx-auto">
         {% for prato in cardapio %}
             <div class="prato card">
                 <img src="{{prato.imagem}}" class="prato__imagem card-img img-fluid" alt="Imagem do Cardápio">
@@ -19,12 +31,33 @@
                     <p class="card-text">{{prato.descricao}}</p>
                     <div class="prato__data__container mt-auto mb-3 d-flex align-items-center">
                         <i class="h5 prato__data__icon my-auto me-1 mdi mdi-clock-outline"></i>
-                        <p class="prato__data card-text">{{prato.data}}</p>
+                        <p class="prato__data card-text m-0">{{prato.data}}</p>
                     </div>
+                    {% if pratos_encomendados %}
+                        {% if prato.id in pratos_encomendados %}
+                            <p class="p-2 alert alert-success m-0"><i class="mdi mdi-check me-2"></i>Prato encomendado!</p>
+                        {% else %}
+                        <form action="{% url 'cardapio' %}" method="post">
+                            {% csrf_token %}
+                            <span class="mb-3 d-flex align-items-center">
+                                <label for="quantidade" class="m-0 me-2">Quantidade.:</label>
+                                <input class="form-control" min="1" max="8" type="number" name="quantidade" id="quantidade" value="1">
+                            </span>
+                            <input type="hidden" name="encomenda" value="{{prato.id}}">
+                            <input class="btn btn-warning w-100" type="submit" value="Encomendar">
+                        </form>
+                        {% endif %}
+                    {% else %}
                     <form action="{% url 'cardapio' %}" method="post">
+                        {% csrf_token %}
+                        <span class="mb-3 d-flex align-items-center">
+                            <label for="quantidade" class="m-0 me-2">Quantidade:</label>
+                            <input class="form-control" min="1" max="8" type="number" name="quantidade" id="quantidade" value="1">
+                        </span>
                         <input type="hidden" name="encomenda" value="{{prato.id}}">
                         <input class="btn btn-warning w-100" type="submit" value="Encomendar">
                     </form>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}

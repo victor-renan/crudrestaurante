@@ -1,5 +1,10 @@
+.prato__container {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: auto;
+}
 .prato {
-    max-width: 400px;
+    width: 100%;
 }
 .prato__imagem {
     height: 300px;
@@ -8,4 +13,7 @@
 }
 .prato__data {
     font-weight: 600;
+}
+.filtro__select {
+    width: 300px;
 }
