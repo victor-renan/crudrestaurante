@@ -2,4 +2,12 @@
 {% load static %}
 
 {% block body %}
+<main class="container">
+    <h2 class="pt-5 mb-4">Categorias</h2>
+    <ul>
+        {% for categoria in categorias %}
+            <li><a href="/cardapio/?filtro={{categoria}}">{{categoria}}</a></li>
+        {% endfor %}
+    </ul>
+</main>
 {% endblock %}
