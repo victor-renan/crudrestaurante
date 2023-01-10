@@ -23,13 +23,6 @@ def cardapio(request):
     for encomenda in encomendas:
         pratos_encomendados.append(encomenda.prato.id)
 
-    #Define o contexto
-    context = {
-        "cardapio": cardapio,
-        "categorias": categorias,
-        "encomendas": encomendas,
-        "pratos_encomendados": pratos_encomendados
-    }
     #Verifica se o metodo eh POST
     if request.method == "POST": 
         encomenda = request.POST["encomenda"]
@@ -42,20 +35,8 @@ def cardapio(request):
                 prato=Prato.objects.filter(id=encomenda).get(),
                 quantidade=quantidade
             ).save()
-        
-        #Refresh the values
-        cardapio = Prato.objects.all()
-        categorias = Categoria.objects.all()
-        encomendas = Encomenda.objects.filter(user=request.user).all()
-        pratos_encomendados = []
-
-        for encomenda in encomendas:
-            pratos_encomendados.append(encomenda.prato.id)
-
-        #atualiza o contexto
-        context.update({"message": "A encomenda foi feita com sucesso!"})
-
-        return render(request, "base/cardapio.html", context)
+        #Recarrega a via GET
+        return HttpResponseRedirect(reverse('cardapio'))
 
     #Verifica a form do filtro enviou a querry
     filtro = request.GET.get("filtro")
@@ -64,11 +45,18 @@ def cardapio(request):
             cardapio = Prato.objects.filter(categoria__nome=filtro)
 
     #Carrega a pagina
-    return render(request, "base/cardapio.html", context)
+    return render(request, "base/cardapio.html", {
+        "cardapio": cardapio,
+        "categorias": categorias,
+        "encomendas": encomendas,
+        "pratos_encomendados": pratos_encomendados
+    })
 
 
 def categorias(request):
-    return render(request, "base/categorias.html")
+    return render(request, "base/categorias.html", {
+        "categorias": Categoria.objects.all()
+    })
 
 
 def sobre(request):

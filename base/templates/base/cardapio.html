@@ -12,7 +12,7 @@
         <p class="alert alert-info"><i class="mdi mdi-info me-3"></i>{{message}}</p>
     {% endif %}
     <form class="filtro__form mb-5 d-flex align-items-center" method="get" action="{% url 'cardapio' %}">
-        <h6 class="m-0 me-3">Filtrar: </h6>
+        <h6 class="m-0 me-3">Filtrar por categoria: </h6>
         <select class="filtro__select m-0 form-select" name="filtro" id="filtro">
             <option value="Todos">Todos os pratos</option>
             {% for categoria in categorias %}
@@ -29,7 +29,8 @@
                 <div class="card-body d-flex flex-column">
                     <h3 class="prato__nome card-title">{{prato.nome}}</h3>
                     <p class="card-text">{{prato.descricao}}</p>
-                    <div class="prato__data__container mt-auto mb-3 d-flex align-items-center">
+                    <p class="prato__categoria card-text badge bg-dark mt-auto">{{prato.categoria}}</p>
+                    <div class="prato__data__container mb-3 d-flex align-items-center">
                         <i class="h5 prato__data__icon my-auto me-1 mdi mdi-clock-outline"></i>
                         <p class="prato__data card-text m-0">{{prato.data}}</p>
                     </div>

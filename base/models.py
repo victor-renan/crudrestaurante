@@ -25,5 +25,6 @@ class Encomenda(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     prato = models.ForeignKey('Prato', on_delete=models.CASCADE)
     quantidade = models.IntegerField(default=1)
+    data = models.DateField(auto_now=True)
     def __str__(self):
-        return f"{self.user} -> {self.quantidade} {self.prato}"
+        return f"{self.user} Pediu {self.quantidade} {self.prato} em {self.data}"

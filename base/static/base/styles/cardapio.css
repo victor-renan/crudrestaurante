@@ -1,10 +1,13 @@
 .prato__container {
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 400px);
     grid-template-rows: auto;
 }
 .prato {
     width: 100%;
+}
+.prato__categoria {
+    width: fit-content;
 }
 .prato__imagem {
     height: 300px;
