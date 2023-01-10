@@ -1,9 +1,6 @@
 # Crud de um restaurante
 Com backend em Python e Django
 
-![Imagem do site](https://i.imgur.com/A1OORDg.jpg)
-![Imagem do site](https://i.imgur.com/tphRicL.png)
-
 ## Como testar
 Tendo o Python e o Pip instalado:
 - Clone o repositório
@@ -15,3 +12,8 @@ Tendo o Python e o Pip instalado:
 - Digite o usuário `admin` com a senha `admin` e entre
 - Digite em outra aba do navegador `localhost/admin` para ter acesso ao painel de administrador
 - Sinta-se a vontade para modificar o banco, criar pratos, usuários, encomendar, etc.
+
+![Imagem do site](https://i.imgur.com/A1OORDg.jpg)
+![Imagem do site](https://i.imgur.com/tphRicL.png)
+
+
