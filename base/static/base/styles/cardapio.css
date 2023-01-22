@@ -20,3 +20,9 @@
 .filtro__select {
     width: 300px;
 }
+.novo-prato__form {
+    background-color: #fff7df;
+}
+.novo-prato__form :is(input[type="text"], select, textarea) {
+    background-color: #ffeaad;
+}

@@ -2,8 +2,15 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 
+
 class User(AbstractUser):
-    pass
+    class Meta:
+        permissions = [
+            ("system_admin", "Pode modificar o cardapio")
+        ]
+    def is_admin(self):
+        return self.has_perm('system_admin')
+
 
 #Tabela para os pratos do cardápio
 class Prato(models.Model):

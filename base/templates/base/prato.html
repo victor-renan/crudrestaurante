@@ -1,0 +1,29 @@
+{% extends "base/layout.html" %}
+{% load static %}
+
+{% block body %}
+    {% if admin %}
+    <main class="p-5">
+        <form method="post" class="novo-prato__form mb-4 col-6" action="{% url 'prato' prato.id %}">
+            {% csrf_token %}
+            <h3>Atualizar prato</h3>
+            <label for="nome_prato">Nome do prato:</label>
+            <input class="form-control mb-3" type="text" id="nome_prato" required name="nome_prato" value="{{prato.nome}}">
+            <label for="descricao_prato">Descrição:</label>
+            <textarea class="form-control mb-3" id="descricao_prato" required name="descricao_prato">{{prato.descricao}}</textarea>
+            <label for="categoria_prato">Categoria:</label>
+            <select class="form-select mb-3" required name="categoria_prato" id="categoria_prato">
+                <option value="{{prato.categoria.id}}">{{prato.categoria.nome}}</option>
+                {% for categoria in categorias %}
+                    <option value="{{categoria.id}}">{{categoria.nome}}</option>
+                {% endfor %}
+            </select>
+            <label for="imagem_prato">Imagem:</label>
+            <input class="form-control mb-3" type="text" id="imagem_prato" required name="imagem_prato" value="{{prato.imagem}}">
+            <input class="btn btn-primary" type="submit" value="Atualizar">
+        </form>
+    </main>
+    {% else %}
+        <p>Você não tem permissão para acessar isso!</p>
+    {% endif %}
+{% endblock %}

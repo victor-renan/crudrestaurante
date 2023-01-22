@@ -1,9 +1,6 @@
 from pathlib import Path
 
 #Import enviroment variables
-import environ
-env = environ.Env()
-environ.Env.read_env()
 
 #OS
 
@@ -17,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY", default="unsafe-secret-key")
+SECRET_KEY = "_639g!sd6705kkrp_d5njj!!(mm@bpkzvbkdg0%xpnrv&5tzd)"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
